@@ -28,15 +28,19 @@ func main() {
 
 	correct := 0
 	for i, p := range problems {
-		fmt.Printf("Problem %d: %s = \n", i+1, p.q)
-		var answer string
-		fmt.Scanf("%s", &answer)
-		if answer == p.a {
+		if checkAnswers(i, p.q, p.a) {
 			correct++
 		}
 	}
-	fmt.Printf("score %d out of %d", correct, len(problems))
+	fmt.Printf("Final score %d out of %d.", correct, len(problems))
 
+}
+
+func checkAnswers(i int, q, a string) (c bool) {
+	fmt.Printf("Problem %d: %s = \n", i+1, q)
+	var answer string
+	fmt.Scanf("%s", &answer)
+	return a == answer
 }
 
 func parseLines(lines [][]string) []problem {
